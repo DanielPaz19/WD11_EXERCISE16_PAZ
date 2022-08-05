@@ -4,6 +4,7 @@ const inputTemp = document.querySelector("#inputTemp");
 const outputTemp = document.querySelector("#outputTemp");
 const selectInputTemp = document.querySelector("#selectInputTemp");
 const selectOutputTemp = document.querySelector("#selectOutputTemp");
+const btnReset = document.querySelector("#btnReset");
 
 const convert = (input) => {
   const selectedInput = selectInputTemp.value;
@@ -58,6 +59,11 @@ const celciusToFahrenheit = (value, reverse = null) =>
 const kelvinToFahrenheit = (value, reverse = null) =>
   reverse ? Number(value) * 255.92777778 : Number(value) * -457.87;
 
+const clearInput = () => {
+  inputTemp.value = "";
+  outputTemp.value = "";
+};
+
 // Event while typing on the input box
 inputTemp.addEventListener("keyup", function (e) {
   convert(e.target.value);
@@ -70,4 +76,9 @@ selectInputTemp.addEventListener("change", function () {
 
 selectOutputTemp.addEventListener("change", function () {
   convert(inputTemp.value);
+});
+
+// Event when button reset
+btnReset.addEventListener("click", function () {
+  clearInput();
 });
